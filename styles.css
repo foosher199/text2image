@@ -544,7 +544,7 @@ input[type="color"]::-webkit-color-swatch {
     color: var(--text-color);
     cursor: pointer;
     padding: 0.4rem 0.8rem;
-    background: white;
+    background: var(--background-color);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     transition: all 0.2s ease;
