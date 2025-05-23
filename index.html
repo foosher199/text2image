@@ -5,36 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text to Image Generator</title>
     <!-- 使用Google Fonts - 添加更多字体选项 -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;700&family=ZCOOL+XiaoWei&family=ZCOOL+QingKe+HuangYou&family=Ma+Shan+Zheng&family=Roboto:wght@400;500;700&family=Playfair+Display:wght@400;500;700&family=Lora:wght@400;500;700&family=Merriweather:wght@400;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>文本转图片生成器</h1>
-            <p class="subtitle">将您的文字转换成精美的图片</p>
-        </header>
-
         <main>
             <div class="input-section">
-                <div class="text-input-container">
-                    <label for="textInput">输入文字</label>
-                    <textarea id="textInput" placeholder="在这里输入您想要转换的文字..."></textarea>
-                </div>
-
-                <div class="style-controls">
+                <!-- 字体设置 -->
+                <div class="control-card">
+                    <h3>字体设置</h3>
                     <div class="control-group">
                         <label for="fontFamily">字体</label>
                         <select id="fontFamily">
-                            <option value="Inter">Inter</option>
-                            <option value="'Noto Sans SC'">思源黑体</option>
-                            <option value="Roboto">Roboto</option>
-                            <option value="'Playfair Display'">Playfair Display</option>
-                            <option value="Arial">Arial</option>
-                            <option value="Georgia">Georgia</option>
+                            <optgroup label="中文字体">
+                                <option value="'Noto Sans SC'">思源黑体</option>
+                                <option value="'Noto Serif SC'">思源宋体</option>
+                                <option value="'ZCOOL XiaoWei'">站酷小薇</option>
+                                <option value="'ZCOOL QingKe HuangYou'">站酷庆科黄油体</option>
+                                <option value="'Ma Shan Zheng'">马善政楷书</option>
+                            </optgroup>
+                            <optgroup label="英文字体">
+                                <option value="Inter">Inter</option>
+                                <option value="Roboto">Roboto</option>
+                                <option value="'Playfair Display'">Playfair Display</option>
+                                <option value="Lora">Lora</option>
+                                <option value="Merriweather">Merriweather</option>
+                                <option value="Montserrat">Montserrat</option>
+                            </optgroup>
+                            <optgroup label="系统字体">
+                                <option value="Arial">Arial</option>
+                                <option value="Georgia">Georgia</option>
+                            </optgroup>
                         </select>
                     </div>
-
                     <div class="control-group">
                         <label for="fontWeight">字体粗细</label>
                         <select id="fontWeight">
@@ -43,29 +47,102 @@
                             <option value="700">粗体</option>
                         </select>
                     </div>
-
                     <div class="control-group">
                         <label for="fontSize">字体大小</label>
                         <input type="range" id="fontSize" min="12" max="72" value="24">
                         <span class="value-display">24px</span>
                     </div>
+                </div>
 
+                <!-- 文字样式 -->
+                <div class="control-card">
+                    <h3>文字样式</h3>
+                    <div class="control-group">
+                        <label>样式效果</label>
+                        <div class="style-toggles">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="textItalic">
+                                斜体
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox" id="textUnderline">
+                                下划线
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox" id="textStrike">
+                                删除线
+                            </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="letterSpacing">字间距</label>
+                        <input type="range" id="letterSpacing" min="-2" max="10" value="0">
+                        <span class="value-display">0px</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="lineHeight">行间距</label>
+                        <input type="range" id="lineHeight" min="1" max="3" step="0.1" value="1.2">
+                        <span class="value-display">1.2</span>
+                    </div>
+                </div>
+
+                <!-- 颜色和背景 -->
+                <div class="control-card">
+                    <h3>颜色设置</h3>
                     <div class="control-group">
                         <label for="textColor">文字颜色</label>
                         <input type="color" id="textColor" value="#000000">
+                        <div class="color-presets">
+                            <button type="button" class="color-preset-btn" style="background-color: #000000" data-color="#000000" title="黑色"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #FFFFFF" data-color="#FFFFFF" title="白色"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #FF3B30" data-color="#FF3B30" title="红色"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #FF9500" data-color="#FF9500" title="橙色"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #FFCC00" data-color="#FFCC00" title="黄色"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #34C759" data-color="#34C759" title="绿色"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #007AFF" data-color="#007AFF" title="蓝色"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #5856D6" data-color="#5856D6" title="紫色"></button>
+                        </div>
                     </div>
-
                     <div class="control-group">
                         <label for="bgColor">背景颜色</label>
                         <input type="color" id="bgColor" value="#ffffff">
+                        <div class="color-presets">
+                            <button type="button" class="color-preset-btn" style="background-color: #FFFFFF" data-color="#FFFFFF" title="白色"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #F5F5F7" data-color="#F5F5F7" title="浅灰"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #000000" data-color="#000000" title="黑色"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #FFE5E5" data-color="#FFE5E5" title="浅红"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #FFF3E0" data-color="#FFF3E0" title="浅橙"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #FFFBE5" data-color="#FFFBE5" title="浅黄"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #E5FFE9" data-color="#E5FFE9" title="浅绿"></button>
+                            <button type="button" class="color-preset-btn" style="background-color: #E5F2FF" data-color="#E5F2FF" title="浅蓝"></button>
+                        </div>
                     </div>
-
                     <div class="control-group">
                         <label class="checkbox-label">
                             <input type="checkbox" id="transparentBg" checked>
                             背景透明
                         </label>
-                        <label class="checkbox-label indent">
+                    </div>
+                </div>
+
+                <!-- 布局设置 -->
+                <div class="control-card">
+                    <h3>布局设置</h3>
+                    <div class="control-group">
+                        <label for="textAlign">文字对齐</label>
+                        <select id="textAlign">
+                            <option value="center" selected>居中对齐</option>
+                            <option value="left">左对齐</option>
+                            <option value="right">右对齐</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="textRotation">文字旋转</label>
+                        <input type="range" id="textRotation" min="-180" max="180" value="0">
+                        <span class="value-display">0°</span>
+                    </div>
+                    <div class="control-group">
+                        <label class="checkbox-label">
                             <input type="checkbox" id="autoCrop" checked>
                             自动裁剪
                         </label>
@@ -89,16 +166,11 @@
                             </select>
                         </div>
                     </div>
+                </div>
 
-                    <div class="control-group">
-                        <label for="textAlign">文字对齐</label>
-                        <select id="textAlign">
-                            <option value="center" selected>居中对齐</option>
-                            <option value="left">左对齐</option>
-                            <option value="right">右对齐</option>
-                        </select>
-                    </div>
-
+                <!-- 特效设置 -->
+                <div class="control-card">
+                    <h3>特效设置</h3>
                     <div class="control-group">
                         <label class="checkbox-label">
                             <input type="checkbox" id="textShadow">
@@ -126,38 +198,79 @@
                             </div>
                         </div>
                     </div>
+                    <div class="control-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="textStroke">
+                            文字描边
+                        </label>
+                        <div class="stroke-controls indent" style="display: none;">
+                            <div class="control-group">
+                                <label for="strokeColor">描边颜色</label>
+                                <input type="color" id="strokeColor" value="#ffffff">
+                            </div>
+                            <div class="control-group">
+                                <label for="strokeWidth">描边宽度</label>
+                                <input type="range" id="strokeWidth" min="1" max="20" value="2">
+                                <span class="value-display">2px</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="preview-section">
-                <h2>预览</h2>
-                <div class="canvas-container">
-                    <canvas id="previewCanvas"></canvas>
-                </div>
-                
-                <div class="preview-controls">
-                    <div class="control-group">
-                        <label>图片尺寸</label>
-                        <div class="size-controls">
-                            <div class="size-inputs">
-                                <input type="number" id="width" placeholder="宽度" value="800">
-                                <span>×</span>
-                                <input type="number" id="height" placeholder="高度" value="400">
-                            </div>
-                            <select id="sizePreset" class="size-preset">
-                                <option value="custom">自定义尺寸</option>
-                                <option value="1:1">正方形 (800×800)</option>
-                                <option value="16:9">16:9 (1280×720)</option>
-                                <option value="4:3">4:3 (1024×768)</option>
-                                <option value="story">竖屏 (1080×1920)</option>
-                                <option value="banner">横幅 (1200×300)</option>
-                                <option value="post">社交帖文 (1080×1080)</option>
-                                <option value="cover">封面图 (1500×500)</option>
-                                <option value="wide">宽屏 (1920×1080)</option>
-                            </select>
+            <div class="right-section">
+                <div class="preview-section">
+                    <div class="preview-area">
+                        <h2>预览</h2>
+                        <div class="canvas-container">
+                            <canvas id="previewCanvas"></canvas>
                         </div>
                     </div>
-                    <button id="downloadBtn" class="primary-button">下载图片</button>
+                    <div class="preview-controls">
+                        <div class="control-group">
+                            <label>图片尺寸</label>
+                            <div class="size-controls">
+                                <div class="size-inputs">
+                                    <input type="number" id="width" placeholder="宽度" value="800">
+                                    <span>×</span>
+                                    <input type="number" id="height" placeholder="高度" value="400">
+                                </div>
+                                <select id="sizePreset" class="size-preset">
+                                    <option value="custom">自定义尺寸</option>
+                                    <option value="1:1">正方形 (800×800)</option>
+                                    <option value="16:9">16:9 (1280×720)</option>
+                                    <option value="4:3">4:3 (1024×768)</option>
+                                    <option value="story">竖屏 (1080×1920)</option>
+                                    <option value="banner">横幅 (1200×300)</option>
+                                    <option value="post">社交帖文 (1080×1080)</option>
+                                    <option value="cover">封面图 (1500×500)</option>
+                                    <option value="wide">宽屏 (1920×1080)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="imageFormat">导出格式</label>
+                            <select id="imageFormat" class="format-select">
+                                <option value="image/png">PNG (支持透明)</option>
+                                <option value="image/jpeg">JPEG (最小体积)</option>
+                                <option value="image/webp">WebP (高压缩比)</option>
+                            </select>
+                            <div class="quality-control">
+                                <label for="exportQuality">导出质量</label>
+                                <input type="range" id="exportQuality" min="0" max="100" value="90">
+                                <span class="value-display">90%</span>
+                            </div>
+                        </div>
+
+                        <button id="downloadBtn" class="primary-button">下载图片</button>
+                    </div>
+                </div>
+
+                <!-- 文本输入区域 -->
+                <div class="text-input-container">
+                    <label for="textInput">输入文字</label>
+                    <textarea id="textInput" placeholder="在这里输入您想要转换的文字..."></textarea>
                 </div>
             </div>
         </main>
