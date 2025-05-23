@@ -399,7 +399,7 @@ document.querySelectorAll('.color-preset-btn').forEach(btn => {
 // 页面加载时初始化
 window.addEventListener('load', () => {
     // 设置默认文本
-    textInput.value = '在这里输入文字\n可以换行';
+    textInput.value = '在这里输入文字';
     // 设置背景颜色输入框状态
     bgColor.disabled = transparentBg.checked;
     // 设置自动裁剪选项状态
@@ -410,4 +410,12 @@ window.addEventListener('load', () => {
     document.querySelector('.shadow-controls').style.display = 'none';
     // 生成默认图片
     generateImage(false);
+    // 初始化语言
+    updatePageText();
+});
+
+// 语言切换处理
+const langSelect = document.getElementById('langSelect');
+langSelect.addEventListener('change', (e) => {
+    switchLanguage(e.target.value);
 }); 

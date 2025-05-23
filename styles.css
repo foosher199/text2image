@@ -36,6 +36,7 @@ body {
 header {
     text-align: center;
     margin-bottom: 2rem;
+    position: relative;
 }
 
 h1 {
@@ -50,6 +51,10 @@ h1 {
 .subtitle {
     color: #666;
     font-size: 1.1rem;
+}
+
+.lang-switcher, .lang-select {
+    display: none;
 }
 
 main {
@@ -564,13 +569,6 @@ input[type="color"]::-webkit-color-swatch {
     margin-bottom: 0.5rem;
 }
 
-/* 暗色模式适配 */
-@media (prefers-color-scheme: dark) {
-    .toggle-label {
-        background: var(--section-background);
-    }
-}
-
 /* 描边控件样式 */
 .stroke-controls {
     border-left: 2px solid var(--border-color);
@@ -671,5 +669,118 @@ optgroup option {
     
     .color-preset-btn:hover {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.footer .version {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footer .version-desc {
+    color: #666;
+    font-size: 0.8rem;
+    background: var(--section-background);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.footer .lang-switch-container {
+    position: relative;
+    margin-left: 0.5rem;
+}
+
+.footer .lang-switch-select {
+    padding: 0.3rem 2rem 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1em;
+}
+
+.footer .lang-switch-select:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.footer .lang-switch-select:hover {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.footer .lang-switch-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+.footer .lang-switch-select option {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 1rem;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .footer .version {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .footer .lang-switch-container {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .footer .lang-switch-select {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 2rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .footer {
+        color: #999;
+        border-top-color: var(--border-color);
+    }
+    
+    .footer .version-desc {
+        background: var(--section-background);
+        color: #999;
+    }
+    
+    .footer .lang-switch-select {
+        background-color: transparent;
+    }
+    
+    .footer .lang-switch-select option {
+        background-color: var(--background-color);
+        color: var(--text-color);
     }
 } 
