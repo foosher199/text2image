@@ -152,7 +152,7 @@ const translations = {
 };
 
 // 当前语言
-let currentLang = 'zh';
+let currentLang = 'en';
 
 // 获取翻译文本
 function t(key) {
