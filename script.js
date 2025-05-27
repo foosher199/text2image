@@ -399,7 +399,7 @@ document.querySelectorAll('.color-preset-btn').forEach(btn => {
 // 页面加载时初始化
 window.addEventListener('load', () => {
     // 设置默认文本
-    textInput.value = '在这里输入文字';
+    textInput.value = t('inputPlaceholder');
     // 设置背景颜色输入框状态
     bgColor.disabled = transparentBg.checked;
     // 设置自动裁剪选项状态
